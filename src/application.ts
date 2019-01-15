@@ -14,6 +14,7 @@ export interface Options {
   router?: express.Router
   catchErrors?: boolean
   githubToken?: string
+  server: express.Application
 }
 
 // Some events can't get an authenticated client (#382):
@@ -33,6 +34,7 @@ export class Application {
   public cache: Cache
   public router: express.Router
   public log: LoggerWithTarget
+  public server: express.Application
 
   private githubToken?: string
 
