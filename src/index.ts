@@ -81,7 +81,7 @@ export class Probot {
     if (typeof appFn === 'string') {
       appFn = resolve(appFn) as ApplicationFunction
     }
-    const app = new Application({ app: this.app, cache, githubToken: this.githubToken })
+    const app = new Application({ app: this.app, cache, githubToken: this.githubToken, server: this.server})
 
     // Connect the router from the app to the server
     this.server.use(app.router)

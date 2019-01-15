@@ -42,6 +42,7 @@ export class Application {
     this.log = wrapLogger(logger, logger)
     this.app = opts.app
     this.cache = opts.cache
+    this.server = opts.server
     this.router = opts.router || express.Router() // you can do this?
     this.githubToken = opts.githubToken
 
@@ -104,11 +105,11 @@ export class Application {
    */
   public route (path?: string): express.Router {
     if (path) {
-      const router = express.Router()
-      this.router.use(path, router)
-      return router
+      const sub1 = express()
+      this.server.use(path, sub1)
+      return sub1
     } else {
-      return this.router
+      return express()
     }
   }
 
